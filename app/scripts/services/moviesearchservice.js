@@ -1,16 +1,13 @@
 'use strict';
 
 angular.module('moviedepotApp')
-  .factory('movieSearchService', function ($http) {
+  .factory('movieSearchService', function ($http, appSettings) {
 
-    var movieSearchApiUrl = 'https://api.themoviedb.org/3/search/movie';
-    var movieSearchApiKey = '{#ApiKey}';
+    function searchByTerm(term, page) {
 
-    function searchByTerm(term /*, page */) {
-
-      return $http.get(movieSearchApiUrl, {
+      return $http.get(appSettings.movieSearchApiUrl, {
         params: {
-          'api_key': movieSearchApiKey,
+          'api_key': appSettings.movieSearchApiKey,
           'query': term
         }
       }).then(function (response) {

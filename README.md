@@ -1,8 +1,14 @@
 # movieDepot
 
-## Build & development
+## Prerequisites
+
+Node, Grunt, Bower
+
+## Build & Development
 
 Run `npm install` and `bower install` to install dependencies.
+
+Add your TMDb API key to `app/scripts/services/appsettings.js`.
 
 Run `grunt` for building and `grunt serve` for preview.
 
