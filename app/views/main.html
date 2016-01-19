@@ -1,0 +1,14 @@
+<div class="container">
+  <div>
+    <input type="text" class="form-control" placeholder="Search..." ng-model="ctrl.searchTerm" ng-model-options="{ debounce: 500 }" />
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="ss-container" shapeshift data="ctrl.results">
+    <div ng-repeat="result in ctrl.results" class="movie-container">
+      <div ng-style="{'background-image': result.poster_path ? ('url(\'http://image.tmdb.org/t/p/w154' + result.poster_path + '\')') : ('url(\'images/yeoman.png\')')}" class="movie-poster"></div>
+      <div class="movie-title">{{result.title}}</div>
+    </div>
+  </div>
+</div>
