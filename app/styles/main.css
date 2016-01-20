@@ -10,7 +10,7 @@ body {
 }
 
 .container-fluid {
-  min-height: 500px;
+  min-height: 250px;
 }
 
 /* side spacing for mobile first views */
@@ -58,6 +58,24 @@ body {
   text-align: center;
 }
 
+.movie-container.ng-enter-stagger {
+  transition-delay:150ms;
+
+  /* prevent CSS inheritance */
+  transition-duration: 0s;
+}
+
+.movie-container.ng-enter {
+  -webkit-transition:0.8s linear all;
+  transition:0.8s linear all;
+
+  opacity:0;
+}
+
+.movie-container.ng-enter-active {
+  opacity:1;
+}
+
 .movie-poster {
   width: 150px;
   height: 150px;
@@ -69,9 +87,28 @@ body {
 .movie-title {
   height: 30px;
   line-height: 30px;
+  font-size: 13px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.popover-section {
+  margin: 0 0 10px;
+}
+
+.popover-section-title {
+  font-style: italic;
+  font-size: 10px;
+}
+
+.popover-section-body {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.pagination-container {
+  text-align: center;
 }
 
 

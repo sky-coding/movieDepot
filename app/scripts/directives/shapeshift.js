@@ -16,33 +16,31 @@ angular.module('moviedepotApp')
           enableResize: true
         };
 
-        // on mobile, only show a single column at all times. debounce prevents excessive resizing.
-        var debouncedResize = debounce(function () {
+        function onResize () {
+          if (!scope.data || !scope.data.length) {
+            return;
+          }
+
           var width = $(window).width();
 
           if (width < 768) {
+            // on mobile, only show a single column at all times.
             $('.ss-container').shapeshift($.extend({}, baseShapeshiftOptions, {columns: 1}));
           } else {
             $('.ss-container').shapeshift(baseShapeshiftOptions);
           }
 
-          // force shapeshift to recalculate positions after column changes
-          element.trigger('ss-rearrange');
+          setTimeout(function () {
+            element.trigger('ss-rearrange');
+          });
 
-        }, 250);
+        }
 
-        // attach debounced resize function to window resize event
-        $(window).resize(debouncedResize);
+        // attach debounced onResize function to window resize event
+        $(window).resize(debounce(onResize, 250));
 
-        scope.$watch('data', function (data) {
-          if (!data || !data.length) {
-            return;
-          }
-
-          // force shapeshift to rebuild after element changes
-          element.shapeshift(baseShapeshiftOptions);
-        });
-
+        // resize on data change
+        scope.$watch('data', onResize);
       }
     };
   });

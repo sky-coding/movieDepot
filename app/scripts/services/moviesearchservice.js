@@ -8,7 +8,8 @@ angular.module('moviedepotApp')
       return $http.get(appSettings.movieSearchApiUrl, {
         params: {
           'api_key': appSettings.movieSearchApiKey,
-          'query': term
+          'query': term,
+          'page': page
         }
       }).then(function (response) {
         return response.data;

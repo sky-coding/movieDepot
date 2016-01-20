@@ -2,7 +2,7 @@
 
 angular.module('moviedepotApp')
   .factory('debounce', function () {
-
+    // borrowed from underscore, don't need entire library
     return function debounce(func, wait, immediate) {
       var timeout;
       return function () {

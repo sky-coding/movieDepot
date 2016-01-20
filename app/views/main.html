@@ -7,8 +7,12 @@
 <div class="container-fluid">
   <div class="ss-container" shapeshift data="ctrl.results">
     <div ng-repeat="result in ctrl.results" class="movie-container">
-      <div ng-style="{'background-image': result.poster_path ? ('url(\'http://image.tmdb.org/t/p/w154' + result.poster_path + '\')') : ('url(\'images/yeoman.png\')')}" class="movie-poster"></div>
+      <div ng-style="{'background-image': result.poster_path ? ('url(\'http://image.tmdb.org/t/p/w154' + result.poster_path + '\')') : ('url(\'images/missing-image-150x150.png\')')}" uib-popover-template="'views/moviepopover.html'" popover-append-to-body="true"  popover-placement="auto bottom" popover-trigger="mouseenter" class="movie-poster"></div>
       <div class="movie-title">{{result.title}}</div>
     </div>
   </div>
+</div>
+
+<div class="container pagination-container" ng-show="ctrl.results && ctrl.results.length && ctrl.currentPage && ctrl.totalResultsCount">
+  <uib-pagination items-per-page="20" total-items="ctrl.totalResultsCount" ng-model="ctrl.currentPage" ng-change="ctrl.pageChanged()" max-size="5"></uib-pagination>
 </div>

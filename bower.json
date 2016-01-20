@@ -5,7 +5,8 @@
     "angular": "^1.4.0",
     "bootstrap": "^3.2.0",
     "angular-animate": "^1.4.0",
-    "jquery.shapeshift": "~2.0.0"
+    "jquery.shapeshift": "~2.0.0",
+    "angular-bootstrap": "~1.1.0"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"

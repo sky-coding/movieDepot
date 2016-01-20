@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-Node, Grunt, Bower
+Node, Grunt, Bower (`npm install grunt-cli bower -g`)
 
 ## Build & Development
 

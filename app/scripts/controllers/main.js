@@ -5,19 +5,32 @@ angular.module('moviedepotApp')
 
     var ctrl = this;
 
-    ctrl.searchTerm = null;
     ctrl.results = [];
+    ctrl.searchTerm = null;
+    ctrl.totalResultsCount = null;
+    ctrl.currentPage = null;
+    ctrl.pageChanged = pageChanged;
 
+    // pull new results from API when search term changes
     $scope.$watch('ctrl.searchTerm', function (searchTerm) {
-
       if (!searchTerm) {
         ctrl.results = [];
         return;
       }
 
-      movieSearchService.searchByTerm(encodeURIComponent(searchTerm)).then(function (data) {
-        ctrl.results = data.results;
-      });
+      searchByTerm(searchTerm);
     });
+
+    function searchByTerm(term, page) {
+      movieSearchService.searchByTerm(encodeURIComponent(term), page).then(function (data) {
+        ctrl.results = data.results;
+        ctrl.currentPage = data.page;
+        ctrl.totalResultsCount = data.total_results;
+      });
+    }
+
+    function pageChanged() {
+      searchByTerm(ctrl.searchTerm, ctrl.currentPage);
+    }
 
   });

@@ -2,5 +2,6 @@
 
 angular
   .module('moviedepotApp', [
-    'ngAnimate'
+    'ngAnimate',
+    'ui.bootstrap'
   ]);
